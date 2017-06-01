@@ -70,8 +70,8 @@ public class BasicTestSetup {
 	public void iosAllocationTest() {
 		printWithTimestamp("Test started, taking screenshot...");
 		driver.getScreenshotAs(OutputType.BASE64);
-		printWithTimestamp("Printing page source:");
-		System.out.println(driver.getPageSource());
+		printWithTimestamp("Getting page source (not printing to save room...)");
+		driver.getPageSource();
 
 	}
 
