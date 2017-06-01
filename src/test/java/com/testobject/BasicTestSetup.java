@@ -44,6 +44,8 @@ public class BasicTestSetup {
 		capabilities.setCapability("testobject_appium_version", appiumVersion);
 		capabilities.setCapability("automationName", automationName);
 
+		capabilities.setCapability("uuid", UUID.randomUUID());
+
 		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
 		System.out.println(capabilities.toString());
 
