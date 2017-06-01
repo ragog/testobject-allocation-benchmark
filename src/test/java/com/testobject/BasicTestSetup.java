@@ -36,7 +36,7 @@ public class BasicTestSetup {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY"));
 		capabilities.setCapability("testobject_device", System.getenv("TESTOBJECT_DEVICE"));
-		capabilities.setCapability("testobject_appium_version", "1.6.4");
+		capabilities.setCapability("testobject_appium_version", "1.6.3");
 		capabilities.setCapability("automationName", "XCUITest");
 
 		printWithTimestamp("Test setup starting, initialising driver...");
