@@ -33,13 +33,19 @@ public class BasicTestSetup {
 		testNameString = "["+testName.getMethodName().toString().toUpperCase()+"]";
 		startTime = new Date().getTime();
 
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY"));
-		capabilities.setCapability("testobject_device", System.getenv("TESTOBJECT_DEVICE"));
-		capabilities.setCapability("testobject_appium_version", System.getenv("TESTOBJECT_APPIUM_VERSION"));
-		capabilities.setCapability("automationName", "XCUITest");
+		String apiKey = System.getenv("TESTOBJECT_API_KEY");
+		String device = System.getenv("TESTOBJECT_DEVICE");
+		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
+		String automationName = System.getenv("TESTOBJECT_AUTOMATION_NAME");
 
-		printWithTimestamp("Test setup starting, initialising driver...");
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("testobject_api_key", apiKey);
+		capabilities.setCapability("testobject_device", device);
+		capabilities.setCapability("testobject_appium_version", appiumVersion);
+		capabilities.setCapability("automationName", automationName);
+
+		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
+		System.out.println(capabilities.toString());
 
 		driver = new IOSDriver(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
 
