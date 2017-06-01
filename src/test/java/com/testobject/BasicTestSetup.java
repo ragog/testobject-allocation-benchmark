@@ -30,16 +30,13 @@ public class BasicTestSetup {
 	@Before
 	public void setUp() throws Exception {
 
-		testNameString = testName.getMethodName().toString().toUpperCase();
+		testNameString = "["+testName.getMethodName().toString().toUpperCase()+"]";
 		startTime = new Date().getTime();
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        /* These are the capabilities we must provide to run our test on TestObject. */
 		capabilities.setCapability("testobject_api_key", System.getenv("TESTOBJECT_API_KEY"));
 		capabilities.setCapability("testobject_device", System.getenv("TESTOBJECT_DEVICE"));
-
-		capabilities.setCapability("testobject_appium_version", "1.6.3");
+		capabilities.setCapability("testobject_appium_version", "1.6.4");
 		capabilities.setCapability("automationName", "XCUITest");
 
 		printWithTimestamp("Test setup starting, initialising driver...");
@@ -59,7 +56,7 @@ public class BasicTestSetup {
 		printWithTimestamp("Test ended, tearing down session.");
 		driver.quit();
 		long endTime = new Date().getTime();
-		printWithTimestamp("Session closed, total test duration: " + (endTime - startTime)/1000);
+		printWithTimestamp("Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
@@ -73,7 +70,7 @@ public class BasicTestSetup {
 	}
 
 	public void printWithTimestamp(String message) {
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+		String timeStamp = new SimpleDateFormat("yyyy.MM.dd, HH:mm:ss").format(new Date());
 		System.out.println(timeStamp + " " + testNameString + " " + message);
 	}
 
