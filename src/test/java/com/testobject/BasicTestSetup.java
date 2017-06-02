@@ -37,12 +37,14 @@ public class BasicTestSetup {
 		String device = System.getenv("TESTOBJECT_DEVICE");
 		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
 		String automationName = System.getenv("TESTOBJECT_AUTOMATION_NAME");
+		String deviceCaching = System.getenv("TESTOBJECT_DEVICE_CACHING");
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("testobject_api_key", apiKey);
 		capabilities.setCapability("testobject_device", device);
 		capabilities.setCapability("testobject_appium_version", appiumVersion);
 		capabilities.setCapability("automationName", automationName);
+		capabilities.setCapability("testobject_cache_device", deviceCaching);
 
 		capabilities.setCapability("uuid", UUID.randomUUID());
 
