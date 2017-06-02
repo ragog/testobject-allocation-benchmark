@@ -43,7 +43,7 @@ public class BasicTestSetup {
 		testNameString = "["+testName.getMethodName().toString().toUpperCase()+"]";
 		startTime = new Date().getTime();
 
-		String url = System.getenv("TESTOBJECT_API_KEY") != null ? System.getenv("TESTOBJECT_API_KEY") : "https://eu1.appium.testobject.com/wd/hub";
+		String url = System.getenv("TESTOBJECT_URL") != null ? System.getenv("TESTOBJECT_URL") : "https://eu1.appium.testobject.com/wd/hub";
 		String apiKey = System.getenv("TESTOBJECT_API_KEY");
 		String device = System.getenv("TESTOBJECT_DEVICE");
 		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
@@ -64,7 +64,7 @@ public class BasicTestSetup {
 //		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
 //		System.out.println(capabilities.toString());
 
-		driver = new IOSDriver(new URL("https://eu1.appium.testobject.com/wd/hub"), capabilities);
+		driver = new IOSDriver(new URL(url), capabilities);
 
 //		printWithTimestamp("Session established.");
 
