@@ -30,6 +30,7 @@ public class BasicTestSetup {
 	public TestName testName = new TestName();
 
 	private String testNameString;
+	private String testUUID;
 	private long startTime;
 
 	@Parameterized.Parameters
@@ -58,8 +59,9 @@ public class BasicTestSetup {
 		if (deviceCaching != null){
 			capabilities.setCapability("testobject_cache_device", deviceCaching);
 		}
-
-		capabilities.setCapability("uuid", UUID.randomUUID().toString());
+		
+		testUUID = UUID.randomUUID().toString();
+		capabilities.setCapability("uuid", testUUID);
 
 //		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
 //		System.out.println(capabilities.toString());
@@ -79,7 +81,7 @@ public class BasicTestSetup {
 //		printWithTimestamp("Test ended, tearing down session.");
 		driver.quit();
 		long endTime = new Date().getTime();
-		printWithTimestamp("Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
+		printWithTimestamp(testUUID + " Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
