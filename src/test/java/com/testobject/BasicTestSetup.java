@@ -43,6 +43,7 @@ public class BasicTestSetup {
 		testNameString = "["+testName.getMethodName().toString().toUpperCase()+"]";
 		startTime = new Date().getTime();
 
+		String url = System.getenv("TESTOBJECT_API_KEY") != null ? System.getenv("TESTOBJECT_API_KEY") : "https://eu1.appium.testobject.com/wd/hub";
 		String apiKey = System.getenv("TESTOBJECT_API_KEY");
 		String device = System.getenv("TESTOBJECT_DEVICE");
 		String appiumVersion = System.getenv("TESTOBJECT_APPIUM_VERSION");
