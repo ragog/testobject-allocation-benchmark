@@ -6,6 +6,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.*;
 import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -14,9 +16,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
+@RunWith(Parameterized.class)
 public class BasicTestSetup {
 
 	private AppiumDriver driver;
@@ -26,6 +31,11 @@ public class BasicTestSetup {
 
 	private String testNameString;
 	private long startTime;
+
+	@Parameterized.Parameters
+	public static List<Object[]> data() {
+		return Arrays.asList(new Object[1000][0]);
+	}
 
 	@Before
 	public void setUp() throws Exception {
@@ -39,7 +49,6 @@ public class BasicTestSetup {
 		String automationName = System.getenv("TESTOBJECT_AUTOMATION_NAME");
 		String deviceCaching = System.getenv("TESTOBJECT_DEVICE_CACHING");
 
-
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("testobject_api_key", apiKey);
 		capabilities.setCapability("testobject_device", device);
@@ -49,7 +58,7 @@ public class BasicTestSetup {
 			capabilities.setCapability("testobject_cache_device", deviceCaching);
 		}
 
-		capabilities.setCapability("uuid", UUID.randomUUID());
+		capabilities.setCapability("uuid", UUID.randomUUID().toString());
 
 		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
 		System.out.println(capabilities.toString());
