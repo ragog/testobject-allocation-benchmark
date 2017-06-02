@@ -49,7 +49,7 @@ public class BasicTestSetup {
 			capabilities.setCapability("testobject_cache_device", deviceCaching);
 		}
 
-		capabilities.setCapability("uuid", UUID.randomUUID());
+		capabilities.setCapability("uuid", UUID.randomUUID().toString());
 
 		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
 		System.out.println(capabilities.toString());
