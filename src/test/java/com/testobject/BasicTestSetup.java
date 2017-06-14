@@ -63,22 +63,21 @@ public class BasicTestSetup {
 		testUUID = UUID.randomUUID().toString();
 		capabilities.setCapability("uuid", testUUID);
 
-//		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
-//		System.out.println(capabilities.toString());
+		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
+		System.out.println(capabilities.toString());
 
 		driver = new IOSDriver(new URL(url), capabilities);
 
-//		printWithTimestamp("Session established.");
-
-//		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_report_url").toString());
-//		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_live_view_url").toString());
+		printWithTimestamp("Session established.");
+		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_live_view_url").toString());
 
 	}
 
 	/* We disable the driver after EACH test has been executed. */
 	@After
 	public void tearDown() {
-//		printWithTimestamp("Test ended, tearing down session.");
+		printWithTimestamp("Test ended, tearing down session.");
+		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_report_url").toString());
 		driver.quit();
 		long endTime = new Date().getTime();
 		printWithTimestamp(testUUID + " Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
@@ -87,9 +86,9 @@ public class BasicTestSetup {
 	/* A simple addition, it expects the correct result to appear in the result field. */
 	@Test
 	public void iosAllocationTest() {
-//		printWithTimestamp("Test started, taking screenshot...");
+		printWithTimestamp("Test started, taking screenshot...");
 		driver.getScreenshotAs(OutputType.BASE64);
-//		printWithTimestamp("Getting page source (not printing to save room...)");
+		printWithTimestamp("Getting page source (not printing to save room...)");
 		driver.getPageSource();
 
 	}
