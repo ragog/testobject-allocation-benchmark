@@ -35,7 +35,7 @@ public class BasicTestSetup {
 
 	@Parameterized.Parameters
 	public static List<Object[]> data() {
-		return Arrays.asList(new Object[1000][0]);
+		return Arrays.asList(new Object[100][0]);
 	}
 
 	@Before
@@ -85,7 +85,7 @@ public class BasicTestSetup {
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
 	@Test
-	public void iosAllocationTest() {
+	public void allocationTest() {
 		printWithTimestamp("Test started, taking screenshot...");
 		driver.getScreenshotAs(OutputType.BASE64);
 		printWithTimestamp("Getting page source (not printing to save room...)");
