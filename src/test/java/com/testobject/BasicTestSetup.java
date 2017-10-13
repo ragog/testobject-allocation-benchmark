@@ -1,18 +1,15 @@
 package com.testobject;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -63,34 +60,21 @@ public class BasicTestSetup {
 		testUUID = UUID.randomUUID().toString();
 		capabilities.setCapability("uuid", testUUID);
 
-		printWithTimestamp("Test setup starting, initialising driver with capabilities:");
-		System.out.println(capabilities.toString());
-
 		driver = new IOSDriver(new URL(url), capabilities);
-
-		printWithTimestamp("Session established.");
-		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_live_view_url").toString());
 
 	}
 
 	/* We disable the driver after EACH test has been executed. */
 	@After
 	public void tearDown() {
-		printWithTimestamp("Test ended, tearing down session.");
-		printWithTimestamp(driver.getCapabilities().getCapability("testobject_test_report_url").toString());
 		driver.quit();
 		long endTime = new Date().getTime();
-		printWithTimestamp(testUUID + " Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
+		printWithTimestamp(testUUID + " Session closed, total test duration: " + (endTime - startTime)/1000 + "s" + " " + driver.getCapabilities().toString());
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
 	@Test
 	public void allocationTest() {
-		printWithTimestamp("Test started, taking screenshot...");
-		driver.getScreenshotAs(OutputType.BASE64);
-		printWithTimestamp("Getting page source (not printing to save room...)");
-		driver.getPageSource();
-
 	}
 
 	public void printWithTimestamp(String message) {
