@@ -69,7 +69,7 @@ public class BasicTestSetup {
 	public void tearDown() {
 		driver.quit();
 		long endTime = new Date().getTime();
-		printWithTimestamp(testUUID + " Session closed, total test duration: " + (endTime - startTime)/1000 + "s");
+		printWithTimestamp((endTime - startTime)/1000 + "");
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
