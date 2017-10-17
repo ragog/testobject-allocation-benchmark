@@ -69,7 +69,7 @@ public class BasicTestSetup {
 	public void tearDown() {
 		driver.quit();
 		long endTime = new Date().getTime();
-		printWithTimestamp((endTime - startTime)/1000 + "");
+		System.out.println((endTime - startTime)/1000 + "");
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
@@ -77,9 +77,5 @@ public class BasicTestSetup {
 	public void allocationTest() {
 	}
 
-	public void printWithTimestamp(String message) {
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd, HH:mm:ss").format(new Date());
-		System.out.println(timeStamp + " " + testNameString + " " + message);
-	}
-
 }
+
