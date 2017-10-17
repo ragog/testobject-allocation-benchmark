@@ -2,15 +2,15 @@ package com.testobject;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -29,10 +29,21 @@ public class BasicTestSetup {
 	private String testNameString;
 	private String testUUID;
 	private long startTime;
+	private static PrintWriter writer;
 
 	@Parameterized.Parameters
 	public static List<Object[]> data() {
 		return Arrays.asList(new Object[100][0]);
+	}
+
+	@BeforeClass
+	public static void setupFile() {
+		try{
+			String timeStamp = new SimpleDateFormat("HHmmss").format(new Date());
+			writer = new PrintWriter("bs-timings-" + timeStamp + "-sierra-chrome.txt", "UTF-8");
+		} catch (IOException e) {
+			// do something
+		}
 	}
 
 	@Before
@@ -69,7 +80,9 @@ public class BasicTestSetup {
 	public void tearDown() {
 		driver.quit();
 		long endTime = new Date().getTime();
-		System.out.println((endTime - startTime)/1000 + "");
+		String timeString = (endTime - startTime)/1000 + "";
+		System.out.println(timeString);
+		writer.write(timeString);
 	}
 
 	/* A simple addition, it expects the correct result to appear in the result field. */
