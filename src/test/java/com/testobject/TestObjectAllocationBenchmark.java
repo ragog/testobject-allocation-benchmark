@@ -1,6 +1,7 @@
 package com.testobject;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.junit.*;
 import org.junit.rules.TestName;
@@ -8,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -71,7 +71,7 @@ public class TestObjectAllocationBenchmark {
 		testUUID = UUID.randomUUID().toString();
 		capabilities.setCapability("uuid", testUUID);
 
-		driver = new IOSDriver(new URL(url), capabilities);
+		driver = new AndroidDriver(new URL(url), capabilities);
 
 	}
 
