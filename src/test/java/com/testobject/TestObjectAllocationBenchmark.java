@@ -63,7 +63,9 @@ public class TestObjectAllocationBenchmark {
 		capabilities.setCapability("testobject_api_key", apiKey);
 		capabilities.setCapability("testobject_device", device);
 		capabilities.setCapability("testobject_appium_version", appiumVersion);
-		capabilities.setCapability("automationName", automationName);
+		if (automationName != null) {
+			capabilities.setCapability("automationName", automationName);
+		}
 		if (deviceCaching != null){
 			capabilities.setCapability("testobject_cache_device", deviceCaching);
 		}
