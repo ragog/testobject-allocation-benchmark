@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RunWith(Parameterized.class)
-public class BasicTestSetup {
+public class TestObjectAllocationBenchmark {
 
 	private AppiumDriver driver;
 
