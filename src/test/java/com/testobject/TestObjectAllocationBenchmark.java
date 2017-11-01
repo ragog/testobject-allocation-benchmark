@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RunWith(Parameterized.class)
-public class BasicTestSetup {
+public class TestObjectAllocationBenchmark {
 
 	private AppiumDriver driver;
 
@@ -40,7 +40,7 @@ public class BasicTestSetup {
 	public static void setupFile() {
 		try{
 			String timeStamp = new SimpleDateFormat("HHmmss").format(new Date());
-			writer = new PrintWriter("bs-timings-" + timeStamp + "-sierra-chrome.txt", "UTF-8");
+			writer = new PrintWriter("testobject-" + timeStamp + "-benchmark.txt", "UTF-8");
 		} catch (IOException e) {
 			// do something
 		}
